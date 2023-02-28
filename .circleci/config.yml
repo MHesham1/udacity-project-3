@@ -310,7 +310,7 @@ jobs:
 #               # your code here
 #             fi
             
-notify-on-success:
+notify:
   docker:
     - image: cimg/base:stable
   steps:
@@ -332,7 +332,7 @@ workflows:
           requires: [build-backend]
       - scan-frontend:
           requires: [build-frontend]
-      - notify-on-success:
+      - notify:
           requires: 
             - test-frontend
             - test-backend
