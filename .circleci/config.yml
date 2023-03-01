@@ -310,14 +310,14 @@ jobs:
 #               # your code here
 #             fi
             
-notify:
-  docker:
-    - image: cimg/base:stable
-  steps:
-    - slack/notify:
-        event: pass
-        channel: circle-ci
-        template: success_tagged_deployment_1
+  notify:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - slack/notify:
+          event: pass
+          channel: circle-ci
+          template: success_tagged_deployment_1
 
 workflows:
   default:
