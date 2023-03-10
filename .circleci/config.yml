@@ -229,7 +229,7 @@ jobs:
       - install_ansible
       - add_ssh_keys:
           fingerprints: ["f6:f1:41:f6:94:fc:b9:2d:fe:6c:93:a6:0e:82:33:58"]
-      - attach_workspaces:
+      - attach_workspace:
           at: ~/
       - run:
             name: Install Dependencies
