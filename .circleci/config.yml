@@ -223,7 +223,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/node:13.8.0
+      - image: cimg/base:stable
     steps:
       - checkout
       - install_ansible
@@ -232,7 +232,7 @@ jobs:
       - attach_workspaces:
           at: ~/
       - run:
-          name: configure-infrastructure
+          name: Install Dependencies
           command: |
             apk add ansible gzip openssh-client
       - run:
