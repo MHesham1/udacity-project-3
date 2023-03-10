@@ -232,11 +232,26 @@ jobs:
       - attach_workspaces:
           at: ~/
       - run:
+            name: Install Dependencies
+            command: |
+              apk add ansible gzip openssh-client
+      - run:
           name: Configure server
           command: |
-            cd .circleci/ansible
-            cat inventory.txt
-            ansible-playbook -i inventory.txt Configure-server.yml
+            # add environment variables to server
+              echo ENVIRONMENT=production > inventory.txt
+              echo TYPEORM_CONNECTION=$TYPEORM_CONNECTION >> inventory.txt
+              echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> inventory.txt
+              echo TYPEORM_ENTITIES=$TYPEORM_ENTITIES >> inventory.txt
+              echo TYPEORM_HOST=$TYPEORM_HOST >> inventory.txt
+              echo TYPEORM_MIGRATIONS=$TYPEORM_MIGRATIONS >> inventory.txt
+              echo TYPEORM_MIGRATIONS_DIR=$TYPEORM_MIGRATIONS_DIR >> inventory.txt
+              echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> inventory.txt
+              echo TYPEORM_PORT=$TYPEORM_PORT >> inventory.txt
+              echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> inventory.txt
+              cd .circleci/ansible
+              cat inventory.txt
+              ansible-playbook -i inventory.txt Configure-server.yml
       - destroy-environment
            
 
