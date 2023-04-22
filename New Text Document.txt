@@ -1,0 +1,18 @@
+Master username
+postgres
+Master password
+aCgt2EP83kglPrgUXV0N
+
+
+
+
+
+
+
+
+Master username
+postgres
+Master password
+aCgt2EP83kglPrgUXV0N
+Endpoint
+udapeople-db.cpcoemor6mpe.us-east-1.rds.amazonaws.com
