@@ -184,7 +184,7 @@ jobs:
 
   deploy-infrastructure:
     docker:
-      - image: cimg/python:3.10
+      - image: amazon/aws-cli
     steps:
       - checkout
       - run:
@@ -195,13 +195,13 @@ jobs:
               --tags project=udapeople \
               --stack-name "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
-              exit_code=$?
-              if [[ $exit_code == 0  ||  $exit_code == 255 ]]; 
-                then
-                    exit 0
-                else
-                    exit 1
-                fi
+              # exit_code=$?
+              # if [[ $exit_code == 0  ||  $exit_code == 255 ]]; 
+              #   then
+              #       exit 0
+              #   else
+              #       exit 1
+              #   fi
       - run:
           name: Ensure front-end infrastructure exist
           command: |
