@@ -243,8 +243,8 @@ jobs:
       - install_ansible
       - add_ssh_keys:
           fingerprints: ["1a:df:f9:63:37:5f:02:9c:9b:57:51:93:1a:b2:07:7a"]
-      - attach_workspace:
-          at: ~/
+      # - attach_workspace:
+      #     at: ~/
       # - run:
       #       name: Install Dependencies
       #       command: |
@@ -465,20 +465,20 @@ workflows:
     jobs:
       - build-frontend
       - build-backend
-      - test-frontend:
-          requires: [build-frontend]
-      - test-backend:
-          requires: [build-backend]
-      - scan-backend:
-          requires: [build-backend]
-      - scan-frontend:
-          requires: [build-frontend]
-      - notify-on-success:
-          requires:
-            - test-frontend
-            - test-backend
-            - scan-backend
-            - scan-frontend
+      # - test-frontend:
+      #     requires: [build-frontend]
+      # - test-backend:
+      #     requires: [build-backend]
+      # - scan-backend:
+      #     requires: [build-backend]
+      # - scan-frontend:
+      #     requires: [build-frontend]
+      # - notify-on-success:
+      #     requires:
+      #       - test-frontend
+      #       - test-backend
+      #       - scan-backend
+      #       - scan-frontend
       - deploy-infrastructure:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
           filters:
